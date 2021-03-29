@@ -16,7 +16,9 @@ const LayoutComp = ({ children }: Props) => {
     const dispatch = useDispatch();
 
     // currency rates should always be updated on page render
-    useEffect(() => dispatch(getExchangeRates()), [dispatch]);
+    useEffect(() => {
+        dispatch(getExchangeRates());
+    }, [dispatch]);
 
     return (
         <>
