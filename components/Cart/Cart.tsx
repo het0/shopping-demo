@@ -1,10 +1,11 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
 
 import { useFormattedPrice } from '@/hooks/useFormattedPrice';
 import { IRootState } from '@/redux/reducers';
 import { removeProduct } from '@/redux/cart/reducer';
+import { toggleCart } from '@/redux/ui/reducer';
 
 import { CartProduct } from './CartProduct/CartProduct';
 import { CartIcon } from './CartIcon/CartIcon';
@@ -16,14 +17,13 @@ const CartComp = () => {
 
     const formatPrice = useFormattedPrice();
 
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-
     const products = useSelector((state: IRootState) => state.cart.products);
     const { totalPrice } = useSelector((state: IRootState) => state.info);
+    const isOpen = useSelector((state: IRootState) => state.ui.isCartOpen);
 
     const totalQty = useMemo(() => products.reduce((a, p) => a + p.qty, 0), [products]);
 
-    const handleToggleCart = useCallback(() => setIsOpen(!isOpen), [isOpen]);
+    const handleToggleCart = useCallback(() => dispatch(toggleCart()), []);
     const onRemove = useCallback((id: number) => dispatch(removeProduct(id)), [dispatch]);
 
     const cartClasses = classnames(styles.cart, isOpen && styles.cart__open);
