@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+
+.breadcrumbs {
+    list-style: none;
+    padding: 0;
+}
+
+.link {
+    display: inline-block;
+
+    a {
+        color: #b5b6bd;
+        display: inline-block;
+        margin-right: 7px;
+        padding-right: 20px;
+        position: relative;
+
+        &:hover {
+            color: #086fcf;
+        }
+
+        &:after {
+            color: #b5b6bd;
+            content: '>';
+            position: absolute;
+            right: 0;
+        }
+    }
+}

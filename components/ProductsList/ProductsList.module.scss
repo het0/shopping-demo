@@ -1,0 +1,8 @@
+.base {
+    width: 100%;
+    min-height: 600px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
