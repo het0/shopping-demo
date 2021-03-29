@@ -15,7 +15,9 @@ const ProductsListComp = () => {
     const formatPrice = useFormattedPrice();
     const { products, loading } = useSelector((state: IRootState) => state.products);
 
-    useEffect(() => dispatch(getProducts()), [dispatch]);
+    useEffect(() => {
+        dispatch(getProducts());
+    }, [dispatch]);
 
     return (
         <div className={styles.base}>
