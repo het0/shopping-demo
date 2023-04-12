@@ -5,7 +5,11 @@ import infoSagas from './info/sagas';
 import currentProductSagas from './currentProduct/sagas';
 
 function* rootSaga() {
-    yield all([fork(productsSagas), fork(infoSagas), fork(currentProductSagas)]);
+  yield all([
+    fork(productsSagas),
+    fork(infoSagas),
+    fork(currentProductSagas),
+  ]);
 }
 
 export default rootSaga;
